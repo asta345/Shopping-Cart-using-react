@@ -16,8 +16,22 @@ class CartItem extends React.Component{
 
 	//here we can use arrow functions will automatically bind this to onstance of class
         increaseQuantity =()=>{
-		console.log('this.state',this.state);
-	}
+	// 	//it will increase the qty of the objects in the console.log
+	// 	//setstate from 1
+		this.setState({
+			qty:this.state.qty+1
+	// 	//react will take that object and merge with it this.state
+		});
+                
+		// console.log('this.state',this.state);
+	
+	        //setstateform2
+		// this.setState=((prevState) => {
+		// 	return{
+		// 		qty:prevState.qty+1
+		// 	}
+		// });
+	} 
 	render(){
 		//def from the object from work easy
          const{price,title,qty}=this.state;
