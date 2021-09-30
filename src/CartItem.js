@@ -11,14 +11,28 @@ class CartItem extends React.Component {
     }
     //here we are binding object to to class to remove undefined error
     // this.increaseQuantity = this.increaseQuantity.bind(this);
-    // this.testing();
+    //  this.testing();
   }
-
+  // testing(){
+  //   const promise = new Promise((resolve,reject)=>{
+  //       setTimeout(() => {
+  //         resolve('done')
+  //       }, 5000);
+  //   })
+  
+  // promise.then (() => {
+  //   //in promise set state act as synchrous call
+  //  this.setState({qty:this.state+1});//after declare set state in event we cannot access the upto date state
+  //  this.setState({qty:this.state+1});
+  //  console.log('state',this.state);
+  // });
+  // }
+  
   //here we can use arrow functions will automatically bind this to instance of class
   increaseQuantity = () => {
-    // this.state.qty += 1;
+  
     // console.log('this', this.state);
-    // setState form 1
+    // setState form 1 is generally used to change title  
     // this.setState({
     //   qty: this.state.qty + 1
     // }, () => {});
@@ -42,8 +56,9 @@ class CartItem extends React.Component {
       return {
         qty: prevState.qty -1
       }
-    });
+   });
   }
+   
   render () {
     console.log('render');
     const { price, title, qty } = this.state;
