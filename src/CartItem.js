@@ -1,75 +1,65 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-  constructor () {
-    super();
-    this.state = {
-      price: 999,
-      title: 'Mobile Phone',
-      qty: 1,
-      img: ''
-    }
-    //here we are binding object to to class to remove undefined error
-    // this.increaseQuantity = this.increaseQuantity.bind(this);
-    //  this.testing();
-  }
-  // testing(){
-  //   const promise = new Promise((resolve,reject)=>{
-  //       setTimeout(() => {
-  //         resolve('done')
-  //       }, 5000);
-  //   })
+ 
+  // // testing(){
+  // //   const promise = new Promise((resolve,reject)=>{
+  // //       setTimeout(() => {
+  // //         resolve('done')
+  // //       }, 5000);
+  // //   })
   
-  // promise.then (() => {
-  //   //in promise set state act as synchrous call
-  //  this.setState({qty:this.state+1});//after declare set state in event we cannot access the upto date state
-  //  this.setState({qty:this.state+1});
-  //  console.log('state',this.state);
-  // });
+  // // promise.then (() => {
+  // //   //in promise set state act as synchrous call
+  // //  this.setState({qty:this.state+1});//after declare set state in event we cannot access the upto date state
+  // //  this.setState({qty:this.state+1});
+  // //  console.log('state',this.state);
+  // // });
+  // // }
+  
+  // //here we can use arrow functions will automatically bind this to instance of class
+  // increaseQuantity = () => {
+  
+  //   // console.log('this', this.state);
+  //   // setState form 1 is generally used to change title  
+  //   // this.setState({
+  //   //   qty: this.state.qty + 1
+  //   // }, () => {});
+
+  //   // setState form 2 - if prevState required use this
+  //   this.setState((prevState) => {
+  //     return {
+  //       qty: prevState.qty + 1
+  //     }
+  //   });
   // }
-  
-  //here we can use arrow functions will automatically bind this to instance of class
-  increaseQuantity = () => {
-  
-    // console.log('this', this.state);
-    // setState form 1 is generally used to change title  
-    // this.setState({
-    //   qty: this.state.qty + 1
-    // }, () => {});
 
-    // setState form 2 - if prevState required use this
-    this.setState((prevState) => {
-      return {
-        qty: prevState.qty + 1
-      }
-    });
-  }
+  // decreaseQuantity = () => {
+  //   const { qty } = this.state;
 
-  decreaseQuantity = () => {
-    const { qty } = this.state;
-
-    if (qty === 0) {
-      return;
-    }
-    // setState form 2 - if prevState required use this
-    this.setState((prevState) => {
-      return {
-        qty: prevState.qty -1
-      }
-   });
-  }
+  //   if (qty === 0) {
+  //     return;
+  //   }
+  //   // setState form 2 - if prevState required use this
+  //   this.setState((prevState) => {
+  //     return {
+  //       qty: prevState.qty -1
+  //     }
+  //  });
+  // }
    
   render () {
     console.log('render');
-    const { price, title, qty } = this.state;
+    const { price, title, qty } = this.props.product;
     return (
       <div className="cart-item">
+        {this.props.jsx}
         <div className="left-block">
           <img style={styles.image} alt=""/>
         </div>
         <div className="right-block">
           <div style={ { fontSize: 25 } }>{title}</div>
-          <div style={ { color: '#777' } }>Rs {price} </div>
+          <div style={ { color: '#777' } }>${price} </div>
           <div style={ { color: '#777' } }>Qty: {qty} </div>
           <div className="cart-item-actions">
             {/* Buttons */}
