@@ -55,7 +55,7 @@ class Cart extends React.Component {
 			}
 			products[index].qty-=1;
 
-			this.setState({
+			this.setState({ //setState is being used in onclick and callback events
 				products
 			})
 			}
@@ -71,8 +71,8 @@ class Cart extends React.Component {
 			
 		}
 	render(){
-	       const {products}=this.state
-	return(
+	       const {products}=this.state 
+        return(
 		
           <div class="cart">
 		  {products.map((product)=>{
