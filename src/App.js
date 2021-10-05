@@ -1,10 +1,10 @@
 
-import react from 'react';
+import React from 'react';
 
 import Cart from './Cart';
 
 import Navbar from './Navbar';
-class App extends react.Component() {
+class App extends React.Component {
     constructor () {
       super();
       this.state = {
@@ -13,7 +13,7 @@ class App extends react.Component() {
             price:999,
             title:'watch',
             qty:1,
-                                    img:'https://media.istockphoto.com/photos/wrist-watch-picture-id180844253',
+           img:'https://media.istockphoto.com/photos/wrist-watch-picture-id180844253',
             id: 1
           },
         
