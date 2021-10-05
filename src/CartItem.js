@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CartItem extends React.Component {
+const CartItem =(props)=>{
  
   // // testing(){
   // //   const promise = new Promise((resolve,reject)=>{
@@ -48,19 +48,18 @@ class CartItem extends React.Component {
   //  });
   // }
    
-  render () {
     console.log('render');
-    const { price, title, qty } = this.props.product;
+    const { price, title, qty } = props.product;
     const {product,
       onIncreaseQuantity
       ,onDecreaseQuantity
-      ,onDeleteProduct}=this.props;
+      ,onDeleteProduct}=props;
     
     return (
       <div className="cart-item">
-        {this.props.jsx}
+        {props.jsx}
         <div className="left-block">
-          <img style={styles.image} alt=""/>
+          <img style={styles.image}  alt=""src={product.img}/>
         </div>
         <div className="right-block">
           <div style={ { fontSize: 25 } }>{title}</div>
@@ -91,7 +90,7 @@ class CartItem extends React.Component {
       </div>
     );
   }
-}
+
 //this is class component it inherit some features from the components
 
 // in react we can style jsx using the objects cannot use css components
