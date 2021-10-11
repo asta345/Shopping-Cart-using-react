@@ -80,12 +80,12 @@ class App extends React.Component {
 
     let count = 0;
 
-    products.forEach((product) => {
+    products.forEach(product => {
       count += product.qty;
-    })
+    });
 
     return count;
-  } 
+  };
   //to get cart total
   getCartTotal = () => {
     const { products } = this.state;
@@ -93,7 +93,10 @@ class App extends React.Component {
     let CartTotal = 0;
 
     products.map((product) => {
+      if(product.qty>0){
       CartTotal = CartTotal + product.qty * product.price
+      }
+      return '';
     })
 
     return CartTotal;
