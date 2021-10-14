@@ -11,28 +11,28 @@ class App extends React.Component {
     super();
     this.state = {
       products: [
-        // {
-        //   price:999,
-        //   title:'watch',
-        //   qty:1,
-        //  img:'https://media.istockphoto.com/photos/wrist-watch-picture-id180844253',
-        //   id: 1
-        // },
+        {
+          price:999,
+          title:'watch',
+          qty:1,
+         img:'https://media.istockphoto.com/photos/wrist-watch-picture-id180844253',
+          id: 1
+        },
       
-        // {
-        //   price:1099,
-        //   title:'phone',
-        //   qty:1,
-        //   img:'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80',
-        //   id:2
-        // },
-        // {
-        //   price:500,
-        //   title:'tablet',
-        //   qty:1,
-        //   img:'https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1173&q=80',
-        //   id:3
-        // },
+        {
+          price:1099,
+          title:'phone',
+          qty:1,
+          img:'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80',
+          id:2
+        },
+        {
+          price:500,
+          title:'tablet',
+          qty:1,
+          img:'https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1173&q=80',
+          id:3
+        },
       
     
        
@@ -43,8 +43,8 @@ class App extends React.Component {
     };
   }
   //  componentDidMount(){
-  //   //  firebase
-  //   //  .firestore()
+  //    firebase
+  //   .firestore()
   //    .collection('products')
   //    .get()
   //    .then((snapshot)=>{
@@ -122,7 +122,7 @@ class App extends React.Component {
           onDeleteProduct={this.handleDeleteProduct}
           products={products}
         />
-        <div style={{ padding: 10, fontSize: 20 }}>
+        <div style={{ padding: 10,fontSize: 20  }}>
           TOTAL : {this.getcartTotal()}
         </div>
       </div>

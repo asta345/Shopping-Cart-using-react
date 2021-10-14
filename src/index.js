@@ -3,14 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 // import * as serviceWorker from "./serviceWorker";
+// import * as firebase from "firebase";
+import "firebase/firestore";
 
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD72XIAehLV64QW1RVXW0akXneXRDNQzGY",
   authDomain: "cart-8e8c2.firebaseapp.com",
@@ -20,13 +16,16 @@ const firebaseConfig = {
   messagingSenderId: "286567248559",
   appId: "1:286567248559:web:4fe8e0820dc2b7060bda5a"
 };
-
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
 
+ReactDOM.render(<App />, document.getElementById("root"));
 
+// export default firebase;
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// serviceWorker.unregister();
