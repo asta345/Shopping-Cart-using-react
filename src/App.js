@@ -1,56 +1,34 @@
 import React from "react";
 import "./App.css";
-//  import CartItem from './CartItem';
+// import CartItem from './CartItem';
 import Cart from "./Cart";
 import Navbar from "./Navbar";
-// import * as firebase from 'firebase';
-
+import * as firebase from "firebase";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: [
-        {
-          price:999,
-          title:'watch',
-          qty:1,
-         img:'https://media.istockphoto.com/photos/wrist-watch-picture-id180844253',
-          id: 1
-        },
-      
-        {
-          price:1099,
-          title:'phone',
-          qty:1,
-          img:'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80',
-          id:2
-        },
-        {
-          price:500,
-          title:'tablet',
-          qty:1,
-          img:'https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1173&q=80',
-          id:3
-        },
-      
-    
-       
-      
-      ]
-        
-        
+      products: [],
+      loading: true
     };
   }
-  //  componentDidMount(){
-  //    firebase
-  //   .firestore()
-  //    .collection('products')
-  //    .get()
-  //    .then((snapshot)=>{
-  //      console.log('snap')
-  //    })
-  //  }
+
+  componentDidMount() {
+    firebase
+      .firestore()
+      .collection("products")
+      .get()
+      .then(snapshot => {
+        const products = snapshot.docs.map(doc => {
+          const data = doc.data();
+          data["id"] = doc.id;
+          return data;
+        });
+        this.setState({ products: products, loading: false });
+      });
+  }
+
   handleIncreaseQuantity = product => {
     const { products } = this.state;
     const index = products.indexOf(product);
@@ -85,7 +63,7 @@ class App extends React.Component {
       products: items
     });
   };
-  //to count cart items
+
   getcountOfCartItems = () => {
     const { products } = this.state;
     let count = 0;
@@ -96,7 +74,7 @@ class App extends React.Component {
 
     return count;
   };
-  // to get cart total
+
   getcartTotal = () => {
     const { products } = this.state;
     let cartTotal = 0;
@@ -112,7 +90,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { products } = this.state;
+    const { products, loading } = this.state;
     return (
       <div className="App">
         <Navbar count={this.getcountOfCartItems()} />
@@ -122,7 +100,8 @@ class App extends React.Component {
           onDeleteProduct={this.handleDeleteProduct}
           products={products}
         />
-        <div style={{ padding: 10,fontSize: 20  }}>
+        {loading && <h1>Loading Products...</h1>}
+        <div style={{ padding: 10, fontSize: 20 }}>
           TOTAL : {this.getcartTotal()}
         </div>
       </div>
