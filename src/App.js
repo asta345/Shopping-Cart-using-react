@@ -30,9 +30,12 @@ class App extends React.Component {
   // }
 
   componentDidMount() {
+    
     firebase
       .firestore()
       .collection("products")
+      // .where('price','>=',999)
+      .orderBy('price')
       .onSnapshot(snapshot => {
         const products = snapshot.docs.map(doc => {
           const data = doc.data();
@@ -47,13 +50,23 @@ class App extends React.Component {
     const { products } = this.state;
     const index = products.indexOf(product);
 
-    products[index].qty += 1;
+    // products[index].qty += 1;
 
-    this.setState({
-      products
-    });
+    // this.setState({
+    //   products
+    // });
+    const docRef = this.db.collection('products').doc(products[index].id);
+    docRef.update({
+      qty:products[index].qty+1
+    })
+    .then(()=>{
+      console.log('updated doc')
+    })
+    .catch((error)=>{
+      console.log('error:',error);
+    })
   };
-
+     
   handleDecreaseQuantity = product => {
     const { products } = this.state;
     const index = products.indexOf(product);
@@ -61,21 +74,41 @@ class App extends React.Component {
     if (products[index].qty === 0) {
       return;
     }
-    products[index].qty -= 1;
+  //   products[index].qty -= 1;
 
-    this.setState({
-      products
-    });
-  };
+  //   this.setState({
+  //     products
+  //   });
+  const docRef = this.db.collection('products').doc(products[index].id);
+    docRef.update({
+     
+      qty:products[index].qty-1
+    })
+    .then(()=>{
+      console.log('updated successfully')
+      .catch((error)=>{
+        console.log('error',error)
+      })
+    })
+     };
 
   handleDeleteProduct = id => {
-    const { products } = this.state;
+    // const{ products } = this.state;
 
-    const items = products.filter(product => product.id !== id);
+    // const items = products.filter(product => product.id !== id);
 
-    this.setState({
-      products: items
-    });
+    // this.setState({
+    //   products: items
+    // });
+    const docRef=this.db.collection('products').doc(id);
+    docRef
+    .delete()
+    .then(()=>{
+      console.log('delete successfully')
+    })
+    .catch((error)=>{
+      console.log('error',error)
+    })
   };
 
   getcountOfCartItems = () => {
